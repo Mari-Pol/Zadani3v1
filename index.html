@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ToDo List</title>
+<style type="text/css">
+li {
+width: 200px;
+}
+
+.delete {
+float: right;
+}
+
+.checked {
+    text-decoration: line-through;
+    font-style: italic;
+    color: black;
+}
+</style>
+</head>
+<body>
+<h1>ToDo List</h1>
+<input type="text" id="to-do">
+<button onclick="js_func()">add</button>
+<ul id="myList">
+<li>
+<!-- click on span.delete will remove this item from list -->
+<span class="delete">-</span>
+buy milk
+</li>
+<li>
+<span class="delete">-</span>
+wash dishes
+</li>
+</ul>
+<script type="text/javascript">
+    var list = document.getElementById("myList");
+    function js_func(){
+        var value = document.getElementById("to-do").value;
+        var li = document.createElement("LI");
+        var textNode = document.createTextNode(value);
+        li.appendChild(textNode);
+        list.appendChild(li);
+    }
+    list.addEventListener("click", function(ev){
+        if (ev.target.tagName === "LI") {
+            ev.target.classList.toggle("checked");
+        }
+    }, false);
+    
+</script>
+</body>
+</html>
